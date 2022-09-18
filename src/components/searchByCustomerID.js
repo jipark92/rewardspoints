@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function searchByCustomerID({ searchCustomerID, setsearchCustomerID }) {
+export default function SearchByCustomerID({ searchCustomerID, setsearchCustomerID }) {
     return (
         <>
             <input

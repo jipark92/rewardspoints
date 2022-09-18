@@ -3,6 +3,7 @@ import React from 'react'
 export default function SearchByDate({ searchDate, setsearchDate }) {
     return (
         <>
+            <label>MONTH:</label>
             <select
                 onChange={(e) => {
                     setsearchDate(e.target.value)

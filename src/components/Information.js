@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { fetchTransactionMockData } from '../helper/fetchTransactionMockData';
 import SearchByDate from './SearchByDate';
 import SearchByCustomerID from './SearchByCustomerID';
+import TableLayout from './TableLayout';
 
 export default function Information() {
 
@@ -22,33 +23,26 @@ export default function Information() {
 
     const filterMapInformation = () => {
         return transMockData
-            .filter((data, i) => {
-                if (searchCustomerID === "") {
-                    return data
-                } else if (data.customerID.includes(searchCustomerID)) {
-                    return data
-                }
+            .filter((data) => {
+                if (searchCustomerID === "") return data
+                if (data.customerID.includes(searchCustomerID)) return data
             })
-            .filter((data, i) => {
-                if (new Date(data.purchaseDate).getMonth().toString() === searchDate) {
-                    return data
-                } else if (searchDate === undefined) {
-                    return data
-                } else if (searchDate === "ALL") {
-                    return data
-                }
+            .filter((data) => {
+                if (new Date(data.purchaseDate).getMonth().toString() === searchDate) return data
+                if (searchDate === undefined) return data
+                if (searchDate === "ALL") return data
             })
             .map((data, i) => {
                 const { transactionID, productName, price, rewards, customerID, purchaseDate } = data
                 return (
-                    <ul key={i}>
-                        <li> Transaction ID: {transactionID}</li>
-                        <li> Product Name: {productName}</li>
-                        <li> Price: {price}</li>
-                        <li> Rewards: {rewards}</li>
-                        <li> Customer ID: {customerID}</li>
-                        <li> Purchase Date: {purchaseDate.slice(0, -42)}</li>
-                    </ul>
+                    <tr key={"user" + i}>
+                        <td>{transactionID}</td>
+                        <td>{productName}</td>
+                        <td>${price}</td>
+                        <td>{rewards}</td>
+                        <td>{customerID}</td>
+                        <td>{purchaseDate.slice(0, -42)}</td>
+                    </tr>
                 )
             })
     }
@@ -59,13 +53,15 @@ export default function Information() {
                 searchCustomerID={searchCustomerID}
                 setsearchCustomerID={setsearchCustomerID}
             />
-
+            
             <SearchByDate
                 searchDate={searchDate}
                 setsearchDate={setsearchDate}
             />
 
-            {isLoading ? filterMapInformation() : "LOADING DATA..."}
+            {isLoading ? <TableLayout
+                filterMapInformation={filterMapInformation}
+            /> : "LOADING DATA..."}
         </div>
     )
 }
