@@ -1,31 +1,7 @@
 import { faker } from '@faker-js/faker'
+import { calculateRewardPoints } from '../helper/calculateRewardsPoints';
 
-const calculateRewardPoints = (price) => {
-    const moreThan50 = 1
-    const moreThan100 = 2
-    if (price > 100) {
-        return (price - 100) * moreThan100 + 50 * moreThan50
-    } else if (price > 50) {
-        return (price - 50) * moreThan50
-    } else {
-        return 0
-    }
-}
-
-// const customer = {
-//     "1": {
-//         id: "123",
-//         name: "Ji",
-//         age: "29"
-//     },
-//     "2": {
-//         id: "456",
-//         name: "Steve",
-//         age: "19"
-//     }
-// }
-
-const transactionMockData = [
+export const transactionMockData = [
     //customer 1
     {
         transactionID: "1",
@@ -102,10 +78,3 @@ const transactionMockData = [
         purchaseDate: new Date("June 15, 2022 07:05:15").toString()
     }
 ]
-
-export const fetchTransactionMockData = () =>
-    new Promise((res, rej) => {
-        setTimeout(() => {
-            res(transactionMockData);
-        }, 2500);
-    });
