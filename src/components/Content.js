@@ -12,8 +12,21 @@ export default function Content() {
     const [searchCustomerID, setsearchCustomerID] = useState("")
     const [searchDate, setsearchDate] = useState()
     const [isLoading, setIsLoading] = useState(false)
-    const [totalReward, setTotalReward] = useState(0);
 
+    //calculate total rewards.
+    let totalRewardPoints = transMockData.reduce((total,data)=>{
+        const {customerID,rewards} = data
+        if(customerID === "123") total.user123totalReward += rewards
+        if(customerID === "456") total.user456totalReward += rewards
+        if(customerID === "789") total.user789totalReward += rewards
+        return total
+    },{
+        user123totalReward: 0,
+        user456totalReward: 0,
+        user789totalReward: 0
+    })
+
+    //mount data
     useEffect(() => {
         fetchTransactionMockData()
             .then(res => {
@@ -21,6 +34,28 @@ export default function Content() {
                 setIsLoading(true)
             })
     }, [])
+
+    //update data with total rewards
+    useEffect(()=>{
+        setTransMockData([
+            ...transMockData,
+            {
+                customerID: "123",
+                productName: "TOTAL REWARDS",
+                rewards: totalRewardPoints.user123totalReward
+            },
+            {
+                customerID: "456",
+                productName: "TOTAL REWARDS",
+                rewards: totalRewardPoints.user456totalReward
+            },
+            {
+                customerID: "789",
+                productName: "TOTAL REWARDS",
+                rewards: totalRewardPoints.user789totalReward
+            }
+        ])
+    },[isLoading])
 
     const filterMapInformation = () => {
         return transMockData
@@ -42,9 +77,9 @@ export default function Content() {
                         <td>{customerID}</td>
                         <td>{transactionID}</td>
                         <td>{productName}</td>
-                        <td>${price}.00</td>
+                        <td>${price}</td>
                         <td>{rewards}</td>
-                        <td>{purchaseDate.slice(0, -42)}</td>
+                        <td>{purchaseDate}</td>
                     </tr>
                 )
             })
