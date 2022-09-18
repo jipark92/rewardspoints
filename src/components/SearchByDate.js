@@ -6,9 +6,9 @@ export default function SearchByDate({ searchDate, setsearchDate }) {
             <select
                 onChange={(e) => {
                     setsearchDate(e.target.value)
-                    console.log(searchDate)
                 }}
             >
+                <option value="ALL">ALL</option>
                 <option value="0">January</option>
                 <option value="1">Febuary</option>
                 <option value="2">March</option>
@@ -21,8 +21,6 @@ export default function SearchByDate({ searchDate, setsearchDate }) {
                 <option value="9">October</option>
                 <option value="10">November</option>
                 <option value="11">December</option>
-                <option value="ALL">ALL</option>
-
             </select>
         </>
     )

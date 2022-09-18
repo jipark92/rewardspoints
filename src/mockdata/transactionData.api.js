@@ -103,8 +103,6 @@ const transactionMockData = [
     }
 ]
 
-
-
 export const fetchTransactionMockData = () =>
     new Promise((res, rej) => {
         setTimeout(() => {
