@@ -1,3 +1,4 @@
+//calculate rewards
 export const calculateRewardPoints = (price) => {
     const moreThan50 = 1
     const moreThan100 = 2

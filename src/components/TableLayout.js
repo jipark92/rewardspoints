@@ -6,11 +6,11 @@ export default function TableLayout({ filterMapInformation }) {
         <Table striped bordered hover size="sm">
             <thead>
                 <tr>
+                    <th>Customer ID</th>
                     <th>Transaction ID</th>
                     <th>Product Name</th>
                     <th>Price</th>
                     <th>Rewards</th>
-                    <th>Customer ID</th>
                     <th>Purchase Date</th>
                 </tr>
             </thead>

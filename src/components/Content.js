@@ -24,10 +24,12 @@ export default function Content() {
 
     const filterMapInformation = () => {
         return transMockData
+            // filter by customer id
             .filter((data) => {
                 if (searchCustomerID === "") return data
                 if (data.customerID.includes(searchCustomerID)) return data
             })
+            // filter by months
             .filter((data) => {
                 if (new Date(data.purchaseDate).getMonth().toString() === searchDate) return data
                 if (searchDate === undefined) return data
@@ -37,11 +39,11 @@ export default function Content() {
                 const { transactionID, productName, price, rewards, customerID, purchaseDate } = data
                 return (
                     <tr key={"user" + i}>
+                        <td>{customerID}</td>
                         <td>{transactionID}</td>
                         <td>{productName}</td>
-                        <td>${price}</td>
+                        <td>${price}.00</td>
                         <td>{rewards}</td>
-                        <td>{customerID}</td>
                         <td>{purchaseDate.slice(0, -42)}</td>
                     </tr>
                 )
