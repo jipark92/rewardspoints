@@ -9,8 +9,8 @@ import '../css/content.css'
 export default function Content() {
 
     const [transMockData, setTransMockData] = useState([])
-    const [searchCustomerID, setsearchCustomerID] = useState("")
-    const [searchDate, setsearchDate] = useState()
+    const [searchCustomerID, setSearchCustomerID] = useState("")
+    const [searchDate, setSearchDate] = useState()
     const [isLoading, setIsLoading] = useState(false)
 
     //calculate total rewards.
@@ -100,12 +100,12 @@ export default function Content() {
             <section className="search-container">
                 <SearchByCustomerID
                     searchCustomerID={searchCustomerID}
-                    setsearchCustomerID={setsearchCustomerID}
+                    setSearchCustomerID={setSearchCustomerID}
                 />
 
                 <SearchByDate
                     searchDate={searchDate}
-                    setsearchDate={setsearchDate}
+                    setSearchDate={setSearchDate}
                 />
             </section>
 

@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function SearchByDate({ searchDate, setsearchDate }) {
+export default function SearchByDate({ searchDate, setSearchDate }) {
     return (
         <>
             <label>MONTH:</label>
             <select
                 onChange={(e) => {
-                    setsearchDate(e.target.value)
+                    setSearchDate(e.target.value)
                 }}
             >
                 <option value="ALL">ALL</option>

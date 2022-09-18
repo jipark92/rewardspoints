@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SearchByCustomerID({ searchCustomerID, setsearchCustomerID }) {
+export default function SearchByCustomerID({ searchCustomerID, setSearchCustomerID }) {
     return (
         <>
             <label>CUSTOMER ID: </label>
@@ -8,7 +8,7 @@ export default function SearchByCustomerID({ searchCustomerID, setsearchCustomer
                 type="text"
                 placeholder='customer ID'
                 onChange={(e) => {
-                    setsearchCustomerID(e.target.value)
+                    setSearchCustomerID(e.target.value)
                 }}>
             </input>
         </>
