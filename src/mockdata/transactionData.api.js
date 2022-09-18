@@ -4,7 +4,7 @@ import { calculateRewardPoints } from '../helper/calculateRewardsPoints';
 export const transactionMockData = [
     //customer 1
     {
-        transactionID: "1",
+        transactionID: faker.database.mongodbObjectId(),
         productName: faker.commerce.productName(),
         price: 250,
         customerID: "123",
@@ -12,7 +12,7 @@ export const transactionMockData = [
         purchaseDate: new Date("July 20, 2022 08:20:18").toString()
     },
     {
-        transactionID: "2",
+        transactionID: faker.database.mongodbObjectId(),
         productName: faker.commerce.productName(),
         price: 85,
         customerID: "123",
@@ -20,7 +20,7 @@ export const transactionMockData = [
         purchaseDate: new Date("June 10, 2022 03:50:45").toString()
     },
     {
-        transactionID: "3",
+        transactionID: faker.database.mongodbObjectId(),
         productName: faker.commerce.productName(),
         price: 76,
         customerID: "123",
@@ -29,7 +29,7 @@ export const transactionMockData = [
     },
     // customer 2
     {
-        transactionID: "1",
+        transactionID: faker.database.mongodbObjectId(),
         productName: faker.commerce.productName(),
         price: 55,
         customerID: "456",
@@ -37,7 +37,7 @@ export const transactionMockData = [
         purchaseDate: new Date("May 12, 2022 05:30:15").toString()
     },
     {
-        transactionID: "2",
+        transactionID: faker.database.mongodbObjectId(),
         productName: faker.commerce.productName(),
         price: 155,
         customerID: "456",
@@ -45,7 +45,7 @@ export const transactionMockData = [
         purchaseDate: new Date("July 27, 2022 01:10:11").toString()
     },
     {
-        transactionID: "3",
+        transactionID: faker.database.mongodbObjectId(),
         productName: faker.commerce.productName(),
         price: 325,
         customerID: "456",
@@ -54,7 +54,7 @@ export const transactionMockData = [
     },
     // customer 3
     {
-        transactionID: "1",
+        transactionID: faker.database.mongodbObjectId(),
         productName: faker.commerce.productName(),
         price: 51,
         customerID: "789",
@@ -62,7 +62,7 @@ export const transactionMockData = [
         purchaseDate: new Date("May 12, 2022 05:30:15").toString()
     },
     {
-        transactionID: "2",
+        transactionID: faker.database.mongodbObjectId(),
         productName: faker.commerce.productName(),
         price: 35,
         customerID: "789",
@@ -70,7 +70,7 @@ export const transactionMockData = [
         purchaseDate: new Date("July 27, 2022 01:10:11").toString()
     },
     {
-        transactionID: "3",
+        transactionID: faker.database.mongodbObjectId(),
         productName: faker.commerce.productName(),
         price: 125,
         customerID: "789",

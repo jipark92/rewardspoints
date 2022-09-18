@@ -5,7 +5,7 @@ import SearchByDate from './SearchByDate';
 import SearchByCustomerID from './SearchByCustomerID';
 import TableLayout from './TableLayout';
 
-export default function Information() {
+export default function Content() {
 
     const [transMockData, setTransMockData] = useState([])
     const [searchCustomerID, setsearchCustomerID] = useState("")
@@ -53,15 +53,18 @@ export default function Information() {
                 searchCustomerID={searchCustomerID}
                 setsearchCustomerID={setsearchCustomerID}
             />
-            
+
             <SearchByDate
                 searchDate={searchDate}
                 setsearchDate={setsearchDate}
             />
 
-            {isLoading ? <TableLayout
-                filterMapInformation={filterMapInformation}
-            /> : "LOADING DATA..."}
+            {isLoading ?
+                <TableLayout
+                    filterMapInformation={filterMapInformation}
+                />
+                : "LOADING DATA..."
+            }
         </div>
     )
 }

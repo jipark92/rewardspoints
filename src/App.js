@@ -1,9 +1,9 @@
-import Information from './components/Information';
+import Content from './components/Content';
 import './css/App.css';
 
 function App() {
     return <div className='App'>
-        <Information/>
+        <Content/>
     </div>;
 }
 
