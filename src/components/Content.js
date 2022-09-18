@@ -4,6 +4,7 @@ import { fetchTransactionMockData } from '../helper/fetchTransactionMockData';
 import SearchByDate from './SearchByDate';
 import SearchByCustomerID from './SearchByCustomerID';
 import TableLayout from './TableLayout';
+import '../css/content.css'
 
 export default function Content() {
 
@@ -48,23 +49,27 @@ export default function Content() {
     }
 
     return (
-        <div>
-            <SearchByCustomerID
-                searchCustomerID={searchCustomerID}
-                setsearchCustomerID={setsearchCustomerID}
-            />
-
-            <SearchByDate
-                searchDate={searchDate}
-                setsearchDate={setsearchDate}
-            />
-
-            {isLoading ?
-                <TableLayout
-                    filterMapInformation={filterMapInformation}
+        <>
+            <section className="search-container">
+                <SearchByCustomerID
+                    searchCustomerID={searchCustomerID}
+                    setsearchCustomerID={setsearchCustomerID}
                 />
-                : "LOADING DATA..."
-            }
-        </div>
+
+                <SearchByDate
+                    searchDate={searchDate}
+                    setsearchDate={setsearchDate}
+                />
+            </section>
+
+            <section className='content-container'>
+                {isLoading ?
+                    <TableLayout
+                        filterMapInformation={filterMapInformation}
+                    />
+                    : "LOADING DATA......."
+                }
+            </section>
+        </>
     )
 }
