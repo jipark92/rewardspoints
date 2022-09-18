@@ -14,13 +14,14 @@ export default function Content() {
     const [isLoading, setIsLoading] = useState(false)
 
     //calculate total rewards.
-    let totalRewardPoints = transMockData.reduce((total,data)=>{
-        const {customerID,rewards} = data
-        if(customerID === "123") total.user123totalReward += rewards
-        if(customerID === "456") total.user456totalReward += rewards
-        if(customerID === "789") total.user789totalReward += rewards
+    //need dynamic solution. ex: if more user gets added.
+    let totalRewardPoints = transMockData.reduce((total, data) => {
+        const { customerID, rewards } = data
+        if (customerID === "123") total.user123totalReward += rewards
+        if (customerID === "456") total.user456totalReward += rewards
+        if (customerID === "789") total.user789totalReward += rewards
         return total
-    },{
+    }, {
         user123totalReward: 0,
         user456totalReward: 0,
         user789totalReward: 0
@@ -36,26 +37,26 @@ export default function Content() {
     }, [])
 
     //update data with total rewards
-    useEffect(()=>{
+    useEffect(() => {
         setTransMockData([
             ...transMockData,
             {
                 customerID: "123",
-                productName: "TOTAL REWARDS",
-                rewards: totalRewardPoints.user123totalReward
+                productName: <b>TOTAL REWARDS</b>,
+                rewards: <b>{totalRewardPoints.user123totalReward}</b>
             },
             {
                 customerID: "456",
-                productName: "TOTAL REWARDS",
-                rewards: totalRewardPoints.user456totalReward
+                productName: <b>TOTAL REWARDS</b>,
+                rewards: <b>{totalRewardPoints.user456totalReward}</b>
             },
             {
                 customerID: "789",
-                productName: "TOTAL REWARDS",
-                rewards: totalRewardPoints.user789totalReward
+                productName: <b>TOTAL REWARDS</b>,
+                rewards: <b>{totalRewardPoints.user789totalReward}</b>
             }
         ])
-    },[isLoading])
+    }, [isLoading])
 
     const filterMapInformation = () => {
         return transMockData
@@ -70,6 +71,15 @@ export default function Content() {
                 if (searchDate === undefined) return data
                 if (searchDate === "ALL") return data
             })
+            //sort numerically
+            .sort((a, b) => {
+                if (a.customerID < b.customerID) {
+                    return -1
+                }
+                else {
+                    return 1
+                }
+            })
             .map((data, i) => {
                 const { transactionID, productName, price, rewards, customerID, purchaseDate } = data
                 return (
@@ -77,7 +87,7 @@ export default function Content() {
                         <td>{customerID}</td>
                         <td>{transactionID}</td>
                         <td>{productName}</td>
-                        <td>${price}</td>
+                        <td>{price}</td>
                         <td>{rewards}</td>
                         <td>{purchaseDate}</td>
                     </tr>
