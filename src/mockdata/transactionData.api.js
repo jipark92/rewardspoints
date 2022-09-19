@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { calculateRewardPoints } from '../helper/calculateRewardsPoints';
+import { calculateRewardPoints } from '../mockdata/helper/calculateRewardsPoints';
 
 export const transactionMockData = [
     //customer 1

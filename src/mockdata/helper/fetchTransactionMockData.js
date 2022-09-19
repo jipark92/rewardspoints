@@ -1,6 +1,6 @@
-import { transactionMockData } from "../mockdata/transactionData.api";
+import { transactionMockData } from "../transactionData.api";
 
-//fetch data
+//mimic fetch
 export const fetchTransactionMockData = () =>
     new Promise((res, rej) => {
         setTimeout(() => {

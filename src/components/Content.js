@@ -16,7 +16,7 @@ export default function Content() {
     const [searchDate, setSearchDate] = useState()
 
     //calculate total rewards.
-    //need dynamic solution. ex: if more user gets added.
+    //TODO:need dynamic solution. ex: if more user gets added.
     let totalRewardPoints = transMockData.reduce((total, data) => {
         const { customerID, rewards } = data
         if (customerID === "123") total.user123totalReward += rewards

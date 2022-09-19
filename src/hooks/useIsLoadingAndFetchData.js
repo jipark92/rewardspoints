@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { fetchTransactionMockData } from "../helper/fetchTransactionMockData"
+import { fetchTransactionMockData } from "../mockdata/helper/fetchTransactionMockData"
 
 export const useIsLoadingAndFetchData = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -9,10 +9,10 @@ export const useIsLoadingAndFetchData = () => {
         fetchTransactionMockData()
             .then(res => {
                 setTransMockData(res)
-                setIsLoading(true)
                 console.log(transMockData)
+                setIsLoading(true)
             })
     }, [])
-    
-    return {isLoading, transMockData, setTransMockData}
+
+    return { isLoading, transMockData, setTransMockData }
 }
