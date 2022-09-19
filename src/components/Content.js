@@ -1,17 +1,19 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { fetchTransactionMockData } from '../helper/fetchTransactionMockData';
 import SearchByDate from './SearchByDate';
 import SearchByCustomerID from './SearchByCustomerID';
 import TableLayout from './TableLayout';
 import '../css/content.css'
+import { useIsLoadingAndFetchData } from '../hooks/useIsLoadingAndFetchData';
 
 export default function Content() {
 
-    const [transMockData, setTransMockData] = useState([])
+    //custom hook loading and fetch 
+    const { isLoading, transMockData, setTransMockData } = useIsLoadingAndFetchData()
+
+    //states
     const [searchCustomerID, setSearchCustomerID] = useState("")
     const [searchDate, setSearchDate] = useState()
-    const [isLoading, setIsLoading] = useState(false)
 
     //calculate total rewards.
     //need dynamic solution. ex: if more user gets added.
@@ -26,15 +28,6 @@ export default function Content() {
         user456totalReward: 0,
         user789totalReward: 0
     })
-
-    //mount data
-    useEffect(() => {
-        fetchTransactionMockData()
-            .then(res => {
-                setTransMockData(res)
-                setIsLoading(true)
-            })
-    }, [])
 
     //update data with total rewards
     useEffect(() => {
